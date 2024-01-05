@@ -3,12 +3,31 @@
 /* ================================================================================== */
 
 // 1: select the animals select element and store it in a variable
+const animalSelect = document.querySelector("#animals");
 
 // 2: select the breeds select element and store it in a variable
+const breedSelect = document.querySelector("#breeds");
 
 // 3: select all of the option elements with a [data-theme] attribute and store them in a variable
+const breedOptions = document.querySelectorAll("option[data-breed]");
 
 // 4: add an event listener on the animals select element that listens for the "change" event
+animalSelect.addEventListener("change", () => {
+  for (let i = 0; i < breedOptions.length; i++) {
+
+    if (animalSelect.value !== breedOptions[i].getAttribute("data-breed")) {
+      breedOptions[i].hidden = true;
+      breedOptions[i].disabled = true;
+    } else {
+      breedOptions[i].hidden = false;
+      breedOptions[i].disabled = false;
+    }
+    }
+
+  if (breedSelect.value !== "") {
+    breedSelect.value = "reselect";
+  }
+})
 
 //   5: start a loop to iterate over each breed option
 
